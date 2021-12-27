@@ -1,5 +1,6 @@
-import plotnine as p9
+from matplotlib import pyplot as plt
 import mizani
+import plotnine as p9
 
 fig_width = 3.37566 # in
 fig_star_width = 7.00137 # in
@@ -24,3 +25,11 @@ software_color, fld_color, fpga_color = pal(3)
 eth_pci = mizani.palettes.brewer_pal("qual", "Set1")(2)
 eth_pci_scale = p9.scale_color_manual(values=eth_pci)
 local_remote_scale=p9.scale_color_manual(values=list(reversed(eth_pci)))
+
+# from https://stackoverflow.com/a/18552607
+def SetPlotRC():
+    # If fonttype = 1 doesn't work with LaTeX, try fonttype 42.
+    plt.rc('pdf',fonttype = 42)
+    plt.rc('ps',fonttype = 42)
+
+SetPlotRC()
